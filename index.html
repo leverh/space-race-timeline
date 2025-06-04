@@ -1,13 +1,337 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journey to the Moon: The Space Race Timeline</title>
+  <meta name="description" content="An interactive timeline of the Space Race from the 1940s to the historic Apollo 11 moon landing in 1969.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/src/styles/base.css">
+  <link rel="stylesheet" href="/src/styles/components/timeline.css">
+  <link rel="stylesheet" href="/src/styles/components/particles.css">
+  <link rel="stylesheet" href="/src/styles/components/navigation.css">
+  <link rel="stylesheet" href="/src/styles/sections/hero.css">
+  <link rel="stylesheet" href="/src/styles/sections/sputnik.css">
+  <link rel="stylesheet" href="/src/styles/sections/gagarin.css">
+  <link rel="stylesheet" href="/src/styles/sections/jfk.css">
+  <link rel="stylesheet" href="/src/styles/sections/spacewalk.css">
+  <link rel="stylesheet" href="/src/styles/sections/apollo.css">
+  <link rel="stylesheet" href="/src/styles/sections/moon-landing.css">
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader">
+      <div class="rocket-loader">
+        <div class="rocket-body"></div>
+        <div class="rocket-flames"></div>
+      </div>
+      <p class="loading-text">Preparing for Launch...</p>
+      <div class="loading-progress">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="main-nav">
+    <div class="nav-brand">
+      <h1>Space Race Timeline</h1>
+    </div>
+    <ul class="nav-timeline">
+      <li><a href="#hero" data-year="1940s">Genesis</a></li>
+      <li><a href="#sputnik" data-year="1957">Sputnik</a></li>
+      <li><a href="#gagarin" data-year="1961">First Human</a></li>
+      <li><a href="#jfk" data-year="1961">Moon Promise</a></li>
+      <li><a href="#spacewalk" data-year="1965">Space Walk</a></li>
+      <li><a href="#apollo" data-year="1968">Apollo</a></li>
+      <li><a href="#moon-landing" data-year="1969">Moon Landing</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Audio Controls -->
+  <div id="audio-controls">
+    <button id="audio-toggle" aria-label="Toggle sound">
+      <span class="audio-on">🔊</span>
+      <span class="audio-off">🔇</span>
+    </button>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    
+    <!-- Hero Section - 1940s Genesis -->
+    <section id="hero" class="timeline-section">
+      <div class="section-background">
+        <div class="stars-layer"></div>
+        <canvas id="hero-canvas"></canvas>
+      </div>
+      
+      <div class="content-container">
+        <div class="timeline-marker">
+          <span class="year">1940s</span>
+          <div class="marker-dot"></div>
+        </div>
+        
+        <div class="section-content">
+          <h2 class="section-title">The Genesis of Space Exploration</h2>
+          <p class="section-description">
+            In the aftermath of World War II, brilliant minds like Wernher von Braun 
+            began transforming rocket sketches into reality, laying the foundation 
+            for humanity's greatest adventure.
+          </p>
+          
+          <div class="rocket-evolution">
+            <div class="sketch-to-reality">
+              <div class="rocket-sketch"></div>
+              <div class="transformation-arrow">→</div>
+              <div class="rocket-real"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="scroll-indicator">
+        <div class="scroll-text">Scroll to explore the journey</div>
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- Sputnik Section - 1957 -->
+    <section id="sputnik" class="timeline-section">
+      <div class="section-background">
+        <canvas id="sputnik-canvas"></canvas>
+      </div>
+      
+      <div class="content-container">
+        <div class="timeline-marker">
+          <span class="year">1957</span>
+          <div class="marker-dot"></div>
+        </div>
+        
+        <div class="section-content">
+          <h2 class="section-title">Sputnik: The First Artificial Satellite</h2>
+          <p class="section-description">
+            On October 4, 1957, the Soviet Union launched Sputnik 1, a 183-pound 
+            metal sphere that changed everything. Its radio beeps echoed around 
+            the world, marking the dawn of the Space Age.
+          </p>
+          
+          <div class="sputnik-stats">
+            <div class="stat">
+              <span class="stat-number">96.2</span>
+              <span class="stat-label">minutes per orbit</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">183</span>
+              <span class="stat-label">pounds</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">21</span>
+              <span class="stat-label">days in orbit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gagarin Section - 1961 -->
+    <section id="gagarin" class="timeline-section">
+      <div class="section-background">
+        <canvas id="gagarin-canvas"></canvas>
+      </div>
+      
+      <div class="content-container">
+        <div class="timeline-marker">
+          <span class="year">1961</span>
+          <div class="marker-dot"></div>
+        </div>
+        
+        <div class="section-content">
+          <h2 class="section-title">Yuri Gagarin: First Human in Space</h2>
+          <p class="section-description">
+            "I see Earth! It is so beautiful!" On April 12, 1961, Soviet cosmonaut 
+            Yuri Gagarin became the first human to journey into outer space, 
+            orbiting Earth in his Vostok 1 spacecraft.
+          </p>
+          
+          <blockquote class="gagarin-quote">
+            "The Earth is blue. How wonderful. It is amazing."
+            <cite>— Yuri Gagarin</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- JFK Section - 1961 -->
+    <section id="jfk" class="timeline-section">
+      <div class="section-background">
+        <canvas id="jfk-canvas"></canvas>
+      </div>
+      
+      <div class="content-container">
+        <div class="timeline-marker">
+          <span class="year">1961</span>
+          <div class="marker-dot"></div>
+        </div>
+        
+        <div class="section-content">
+          <h2 class="section-title">JFK's Moon Challenge</h2>
+          <p class="section-description">
+            On May 25, 1961, President Kennedy made a bold declaration that would 
+            define a decade and inspire a nation to reach for the stars.
+          </p>
+          
+          <blockquote class="jfk-quote">
+            "I believe that this nation should commit itself to achieving the goal, 
+            before this decade is out, of landing a man on the Moon and returning 
+            him safely to the Earth."
+            <cite>— John F. Kennedy</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spacewalk Section - 1965 -->
+    <section id="spacewalk" class="timeline-section">
+      <div class="section-background">
+        <canvas id="spacewalk-canvas"></canvas>
+      </div>
+      
+      <div class="content-container">
+        <div class="timeline-marker">
+          <span class="year">1965</span>
+          <div class="marker-dot"></div>
+        </div>
+        
+        <div class="section-content">
+          <h2 class="section-title">First Spacewalk</h2>
+          <p class="section-description">
+            Soviet cosmonaut Alexei Leonov became the first human to conduct 
+            extravehicular activity, floating freely in the cosmos for 12 minutes 
+            and 9 seconds.
+          </p>
+          
+          <div class="spacewalk-details">
+            <div class="detail">
+              <h4>Duration</h4>
+              <p>12 minutes 9 seconds</p>
+            </div>
+            <div class="detail">
+              <h4>Mission</h4>
+              <p>Voskhod 2</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Apollo Section - 1968 -->
+    <section id="apollo" class="timeline-section">
+      <div class="section-background">
+        <canvas id="apollo-canvas"></canvas>
+      </div>
+      
+      <div class="content-container">
+        <div class="timeline-marker">
+          <span class="year">1968</span>
+          <div class="marker-dot"></div>
+        </div>
+        
+        <div class="section-content">
+          <h2 class="section-title">Apollo Program: Journey to the Moon</h2>
+          <p class="section-description">
+            The Apollo program represented humanity's most ambitious undertaking. 
+            Massive Saturn V rockets, standing 363 feet tall, would carry brave 
+            astronauts on their historic journey.
+          </p>
+          
+          <div class="rocket-stages">
+            <div class="stage" data-stage="1">
+              <h4>First Stage</h4>
+              <p>S-IC: 5 F-1 engines</p>
+            </div>
+            <div class="stage" data-stage="2">
+              <h4>Second Stage</h4>
+              <p>S-II: 5 J-2 engines</p>
+            </div>
+            <div class="stage" data-stage="3">
+              <h4>Third Stage</h4>
+              <p>S-IVB: 1 J-2 engine</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Moon Landing Section - 1969 -->
+    <section id="moon-landing" class="timeline-section finale">
+      <div class="section-background">
+        <canvas id="moon-canvas"></canvas>
+      </div>
+      
+      <div class="content-container">
+        <div class="timeline-marker">
+          <span class="year">1969</span>
+          <div class="marker-dot"></div>
+        </div>
+        
+        <div class="section-content">
+          <h2 class="section-title">One Giant Leap for Mankind</h2>
+          <p class="section-description">
+            On July 20, 1969, Neil Armstrong and Buzz Aldrin became the first 
+            humans to set foot on another celestial body, fulfilling Kennedy's 
+            bold promise and marking humanity's greatest achievement.
+          </p>
+          
+          <blockquote class="armstrong-quote">
+            "That's one small step for man, one giant leap for mankind."
+            <cite>— Neil Armstrong</cite>
+          </blockquote>
+          
+          <div class="mission-crew">
+            <div class="crew-member">
+              <h4>Neil Armstrong</h4>
+              <p>Commander</p>
+            </div>
+            <div class="crew-member">
+              <h4>Buzz Aldrin</h4>
+              <p>Lunar Module Pilot</p>
+            </div>
+            <div class="crew-member">
+              <h4>Michael Collins</h4>
+              <p>Command Module Pilot</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footprint-finale">
+        <div class="lunar-footprint"></div>
+        <p class="finale-text">The journey that began with sketches ended with footprints on the Moon.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Particle System Container -->
+  <div id="particle-container"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script type="module" src="/src/js/main.js"></script>
+</body>
 </html>
